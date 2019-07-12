@@ -123,9 +123,9 @@ class Guess
         if ($guess === $this->number) {
             $res = "";
         } elseif ($guess > $this->number) {
-            $res = "TO HIGH";
+            $res = "TO HIGHoz";
         } else {
-            $res = "TO LOW";
+            $res = "TO LOWoz";
         }
 
         if ($this->tries < 1) {

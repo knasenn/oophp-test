@@ -7,7 +7,8 @@
     "autoload": {
         "psr-4": {
             "Anax\\": "src/",
-            "Aiur\\": "src/"
+            "Aiur\\": "src/",
+            "Aiur18x\\": "src/"
           }
     },
     "require": {

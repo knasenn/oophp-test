@@ -163,12 +163,12 @@ class Guess
         }
 
         if ($guess === $this->number) {
-            $res = "CORRECT";
+            $res = "CORRECTo";
             $this->win();
         } elseif ($guess > $this->number) {
-            $res = "TO HIGH";
+            $res = "TO HIGHo";
         } else {
-            $res = "TO LOW";
+            $res = "TO LOWo";
         }
 
         return $res;
