@@ -1,8 +1,8 @@
 <?php
 
-namespace Anax\View;
+namespace Aiur\View;
 
-?><h1>Get 100 gamez</h1>
+?><h1>Get 100 game (test)</h1>
 <br>
 <form method="post">
     <input type="submit" name="roll" value="ROLL">

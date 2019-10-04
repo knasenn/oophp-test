@@ -93,5 +93,15 @@ return [
             "url" => "hundra-game",
             "title" => "Få hundra spelet",
         ],
+        [
+            "text" => "hundra-game2",
+            "url" => "hundra-game2",
+            "title" => "Få hundra spelet",
+        ],
+        [
+            "text" => "Movie",
+            "url" => "moviex",
+            "title" => "movieX yo",
+        ],
     ],
 ];

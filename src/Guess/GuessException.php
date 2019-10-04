@@ -1,6 +1,6 @@
 <?php
 
-// namespace Mos\Guess;
+namespace Mos\Guess;
 
 /**
  * Exception class for PersonAgeException.

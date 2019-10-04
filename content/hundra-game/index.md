@@ -1,7 +1,7 @@
 The "First To 100" Game
 ===============================
 
-[Start game!](hundra/init)
+[Start game!](hundra1/init)
 
 This is a game for two players.
 

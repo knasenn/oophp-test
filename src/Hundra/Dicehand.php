@@ -8,8 +8,10 @@ namespace Aiur\Hundra;
  /**
   * Guess my number, a class supporting the game through GET, POST and SESSION.
   */
-class Dicehand
+class Dicehand implements HistogramInterface
 {
+
+      use Histogram;
 
 
      /**

@@ -17,7 +17,7 @@ $app->router->get("hundra/init", function () use ($app) {
 /**
  * Show game status
  */
-$app->router->get("hundra/play", function () use ($app) {
+$app->router->get("hundraa/play", function () use ($app) {
     $game = new Aiur\Hundra\Dicehand();
     $value = 0;
 
@@ -32,6 +32,8 @@ $app->router->get("hundra/play", function () use ($app) {
         "roll1" => $_SESSION["roll1"] ?? null,
         "roll2" => $_SESSION["roll2"] ?? null,
         "save" => $_SESSION["save"] ?? null,
+        "histoText" => $_SESSION["histoText"] ?? "",
+        "histoArray" => $_SESSION["histoArray"] ?? [],
         "computerScores" => $_SESSION["computerScores"] ?? array(),
         "playerScores" => $_SESSION["playerScores"] ?? array()
     ];
@@ -49,6 +51,7 @@ $app->router->get("hundra/play", function () use ($app) {
 $app->router->post("hundra/play", function () use ($app) {
 
     $current = $_SESSION["player"] ?? 1;
+    $histoArray = $_SESSION["histoArray"] ?? [];
 
     $roll = $_POST["roll"] ?? null;
     $save = $_POST["save"] ?? null;
@@ -65,6 +68,12 @@ $app->router->post("hundra/play", function () use ($app) {
         $rollHand = $game->roll();
         $_SESSION["roll1"] = $rollHand[0];
         $_SESSION["roll2"] = $rollHand[1];
+
+        array_push($histoArray, $rollHand[0], $rollHand[1]);
+        $_SESSION["histoArray"] = $histoArray;
+        $_SESSION["histoText"] = $game->getAsText($histoArray);
+
+
 
         $check = $game->check($rollHand, $current);
         if ($check[0] == 0) {
@@ -126,9 +135,21 @@ $app->router->get("hundra/playComp", function () use ($app) {
     if (!isset($_SESSION['computerScores'])) {
         $_SESSION['computerScores'] = array();
     }
-    array_push($_SESSION['computerScores'], $check[0]);
 
-    $_SESSION["player2"] = $roll->addDice($_SESSION["player2"], $check[0]);
+
+    if ($_SESSION['computerScores'] > $_SESSION["playerScores"]) {
+        array_push($_SESSION['computerScores'], $check[0]);
+        $_SESSION["player2"] = $roll->addDice($_SESSION["player2"], $check[0]);
+    } else {
+        array_push($_SESSION['computerScores'], $check[0]);
+        $_SESSION["player2"] = $roll->addDice($_SESSION["player2"], $check[0]);
+        $rollComputer = $game->roll();
+        $check = $game->check($rollComputer, $current);
+        array_push($_SESSION['computerScores'], $check[0]);
+        $_SESSION["player2"] = $roll->addDice($_SESSION["player2"], $check[0]);
+    }
+
+
     $_SESSION["player"] = 1;
 
     $score = $play->checkPlayer($_SESSION["player2"]);

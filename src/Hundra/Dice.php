@@ -4,6 +4,10 @@ namespace Aiur\Hundra;
 
 class Dice
 {
+    
+
+
+
 
     /**
      * Dice randomizer
