@@ -103,5 +103,16 @@ return [
             "url" => "moviex",
             "title" => "movieX yo",
         ],
+        [
+            "text" => "filter-text",
+            "url" => "filter-text",
+            "title" => "movieX yo",
+        ],
+        [
+            "text" => "content",
+            "url" => "contentx",
+            "title" => "contentx yo",
+        ],
+
     ],
 ];
